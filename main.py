@@ -1,21 +1,26 @@
-import pandas as pd
+from flask import Flask, render_template
+import mysql.connector
 
-#Class work
-# data = pandas.read_csv("wine.csv")
-# data = data.drop("region_1",axis=1)
-# data = data.dropna(subset="country")
-# mean_price = data["price"].sum()/data["price"].count()
-# data["price"] = data["price"].fillna(mean_price)
-# #print(data.describe())
-# #print(data.isna().sum())
-# #print(data[ (data["price"]>300) & (data["country"]=="Italy") ])
-# print(data.groupby(["country","price"]).count())
+def get_connect():
+    return mysql.connector.connect(
+        host="185.114.247.43",
+        user="sch688_vvedenie",
+        password="Qwerty123") 
 
-#Home
-data = pd.read_csv("titanic.csv")
+app = Flask(__name__)
 
-#data = data.dropna()
-#print(data.isna().sum())
-#print(data.columns)
-#print(data[data.Pclass == 1].Fare.mean())
-print(data[data.Survived == 0].Age.mean())
+@app.route("/")
+def login_page():
+    return render_template("login_page.html")
+
+@app.route("/registration")
+def registration_page():
+    return render_template("registration_page.html")
+
+@app.rounte("/register_user")
+def register_user():
+    connect = get_connect()
+    cur = connect.cursor()
+    cur.execute("INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...)")
+
+app.run()
