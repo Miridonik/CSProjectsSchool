@@ -93,14 +93,14 @@
     <div class="container">
         <h2>Новый аккаунт</h2>
         
-        <form id="regForm">
+        <form action="/register_user" id="regForm" method="post">
             <div class="form-group">
                 <label>Ваше имя</label>
-                <input type="text" placeholder="Иван Иванов" required>
+                <input type="text" placeholder="Иван Иванов" id='name'required>
             </div>
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" placeholder="email@example.com" required>
+                <input type="email" placeholder="email@example.com" id='mail' required>
             </div>
             <div class="form-group">
                 <label>Пароль</label>
@@ -138,10 +138,12 @@
 
             // Имитация успешной регистрации -> переход в личный кабинет
             // В реальности здесь была бы отправка данных на сервер
-            alert('Регистрация успешна!');
-            window.location.href = 'dashboard.html';
+            //alert('Регистрация успешна!');
+           // window.location.href = 'dashboard.html';
         });
     </script>
 
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="../static/script.js" ></script>
 </html>

@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,request
 import mysql.connector
 
 def get_connect():
@@ -17,10 +17,15 @@ def login_page():
 def registration_page():
     return render_template("registration_page.html")
 
-@app.rounte("/register_user")
+@app.route("/register_user",methods=["POST"])
 def register_user():
+    rqs = request.get_json()
+    name = rqs['name']
+    pass1 = rqs['pass1']
+    mail = rqs['mail']
     connect = get_connect()
     cur = connect.cursor()
-    cur.execute("INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...)")
+    # cur.execute("INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...)")
+    return "okey"
 
 app.run()
